@@ -38,6 +38,12 @@ io.on('connection', socket => {
         const socketId = emailToSocketMapping.get(emailId);
         socket.to(socketId).emit('incomming-call', { from: fromEmail, offer });
     })
+
+    socket.on('call-accepted', data => {
+        const { emailId, answer } = data;
+        const socketId = emailToSocketMapping.get(emailId);
+        socket.to(socketId).emit('call-accepted', { answer });
+    })
 })
 
 app.listen(8000, () => console.log(`HTTP server listening on port 8000`));
