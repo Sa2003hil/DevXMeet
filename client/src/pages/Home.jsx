@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Typography } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 
 const Home = () => {
     return (
@@ -7,13 +7,13 @@ const Home = () => {
 
 
             <div class="relative h-[90vh] flex flex-col text-gray-700 bg-white shadow-md w-[30vw] rounded-xl bg-clip-border">
-                <Typography color="blue-gray" className="flex justify-center m-auto text-gray-500 text-2xl font-extralight gap-1 mb-3">
-                    Sign In
-                </Typography>
+                <p color="blue-gray" className="flex justify-center m-auto text-gray-500 text-2xl font-extralight gap-1 mb-3">
+                    Join Now
+                </p>
                 <hr className=" mb-2 w-[50%] m-auto" />
-                <Typography color="blue-gray" className="flex justify-center m-auto text-4xl gap-1 mb-8">
-                    Welcome to <span className=" text-pink-400 font-medium">DevXMeet</span>
-                </Typography>
+                <p color="blue-gray" className="flex justify-center m-auto text-4xl gap-1 mb-8">
+                    Welcome to <span className=" text-pink-400 font-light">DevXMeet</span>
+                </p>
                 <div class="flex flex-col gap-4 p-6">
                     <div class="relative h-11 w-full min-w-[200px]">
                         <input
