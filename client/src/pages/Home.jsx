@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Button } from "@material-tailwind/react";
 import { useSocket } from '../providers/Socket'
 import { useNavigate } from 'react-router-dom';
@@ -13,14 +13,18 @@ const Home = () => {
     const [roomId, setroomId] = useState();
 
 
-    const handleRoomJoined = ({ roomId }) => {
-        console.log('Room Joined', roomId);
+    const handleRoomJoined = useCallback(({ roomId, emailId }) => {
+        console.log('Room Joined', roomId, emailId);
         navigate(`/room/${roomId}`);
-    }
-
+    }, [navigate]
+    )
     useEffect(() => {
         socket.on('joined-room', handleRoomJoined);
-    }, [socket]);
+
+        return () => {
+            socket.off('joined-room', handleRoomJoined);
+        }
+    }, [handleRoomJoined, socket]);
 
     const handleRoomJoin = () => {
         socket.emit('join-room', { emailId: email, roomId });
